@@ -1,0 +1,186 @@
+/* ---------------------------------------------
+   Lock body scroll when modal is open
+---------------------------------------------- */
+body.wc-enquiry-body-lock {
+  overflow: hidden !important;
+}
+
+/* ---------------------------------------------
+   Overlay (modal background)
+---------------------------------------------- */
+.wc-enquiry-modal {
+  display: none; /* hidden by default */
+  position: fixed;
+  inset: 0; /* shorthand for top, right, bottom, left */
+  width: 100%;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.55);
+  z-index: 999999; /* ensure above ALL themes & sliders */
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  box-sizing: border-box;
+
+  /* Safety fix: ensure it's always above footer */
+  pointer-events: auto;
+}
+
+.wc-enquiry-modal.wc-enquiry-open {
+  display: flex !important;
+}
+
+/* ---------------------------------------------
+   Modal box
+---------------------------------------------- */
+.wc-enquiry-modal-inner {
+  background: #ffffff;
+  max-width: 540px;
+  width: 100%;
+  border-radius: 10px;
+  padding: 26px 30px 32px;
+  position: relative;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.25);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  box-sizing: border-box;
+  animation: enquiryFadeIn 0.22s ease-out;
+}
+
+/* Smooth intro animation */
+@keyframes enquiryFadeIn {
+  from { transform: translateY(18px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+/* ---------------------------------------------
+   Close button (X)
+---------------------------------------------- */
+.wc-enquiry-close {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  border: none;
+  background: transparent;
+  font-size: 26px;
+  line-height: 1;
+  color: #333;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.wc-enquiry-close:hover {
+  opacity: 0.65;
+}
+
+/* ---------------------------------------------
+   Titles
+---------------------------------------------- */
+.wc-enquiry-title {
+  margin: 0 0 10px;
+  font-size: 22px;
+  font-weight: 600;
+  color: #111;
+}
+
+.wc-enquiry-product-label {
+  margin: 0 0 18px;
+  font-size: 14px;
+  color: #555;
+}
+
+/* ---------------------------------------------
+   Form fields
+---------------------------------------------- */
+.wc-enquiry-field {
+  margin-bottom: 14px;
+}
+
+.wc-enquiry-field label {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #333;
+}
+
+.wc-enquiry-field input,
+.wc-enquiry-field textarea {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 6px;
+  border: 1px solid #d1d5db;
+  font-size: 14px;
+  box-sizing: border-box;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.wc-enquiry-field input:focus,
+.wc-enquiry-field textarea:focus {
+  border-color: #000;
+  outline: none;
+  box-shadow: 0 0 0 1px #000;
+}
+
+/* ---------------------------------------------
+   Submit button
+---------------------------------------------- */
+.wc-enquiry-actions {
+  margin-top: 12px;
+  text-align: right;
+}
+
+.wc-enquiry-submit {
+  background: #000;
+  color: #ffffff;
+  border: none;
+  border-radius: 6px;
+  padding: 11px 22px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.25s, transform 0.1s;
+}
+
+.wc-enquiry-submit:hover {
+  opacity: 0.9;
+}
+
+.wc-enquiry-submit:active {
+  transform: scale(0.98);
+}
+
+/* ---------------------------------------------
+   Feedback message (success/error)
+---------------------------------------------- */
+.wc-enquiry-feedback {
+  margin-top: 12px;
+  font-size: 14px;
+  font-weight: 500;
+  display: none;
+}
+
+.wc-enquiry-success {
+  color: #16a34a; /* green */
+}
+
+.wc-enquiry-error {
+  color: #dc2626; /* red */
+}
+
+/* ---------------------------------------------
+   Mobile adjustments
+---------------------------------------------- */
+@media (max-width: 480px) {
+  .wc-enquiry-modal-inner {
+    padding: 20px 16px 24px;
+    max-width: 92%;
+  }
+
+  .wc-enquiry-title {
+    font-size: 20px;
+  }
+
+  .wc-enquiry-submit {
+    width: 100%;
+    padding: 12px;
+  }
+}
